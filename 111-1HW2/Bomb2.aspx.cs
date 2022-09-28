@@ -30,16 +30,13 @@ namespace _111_1HW2
             }
             for (int i_Row = 0; i_Row < 10; i_Row++)
             {
-                int BombCt = 0;
                 for (int i_Col = 0; i_Col < 10; i_Col++)
                 {
                     if (ia_Map[i_Row, i_Col] == '*')
                     {
                         continue;
                     }
-                    Response.Write(i_Row);
-                    Response.Write(i_Col);
-                    Response.Write("<br>");
+                    int BombCt = 0;
                     //左上
                     if ((i_Row - 1) >= 0 && (i_Col - 1) >= 0)
                     {
@@ -47,11 +44,9 @@ namespace _111_1HW2
                         if (ia_Map[i_Row - 1, i_Col - 1] == '*')
                         {
                             BombCt++;
-                            break;
                         }
-                        /*
                         //上
-                        if (ia_Map[i_Row - 1, i_Col - 0] == '*')
+                        if (ia_Map[i_Row - 1, i_Col] == '*')
                         {
                             BombCt++;
                         }
@@ -61,12 +56,12 @@ namespace _111_1HW2
                             BombCt++;
                         }
                         //左
-                        if (ia_Map[i_Row - 0, i_Col - 1] == '*')
+                        if (ia_Map[i_Row, i_Col - 1] == '*')
                         {
                             BombCt++;
                         }
                         //右
-                        if (ia_Map[i_Row - 0, i_Col + 1] == '*')
+                        if (ia_Map[i_Row, i_Col + 1] == '*')
                         {
                             BombCt++;
                         }
@@ -76,7 +71,7 @@ namespace _111_1HW2
                             BombCt++;
                         }
                         //下
-                        if (ia_Map[i_Row + 1, i_Col - 0] == '*')
+                        if (ia_Map[i_Row + 1, i_Col] == '*')
                         {
                             BombCt++;
                         }
@@ -84,68 +79,325 @@ namespace _111_1HW2
                         if (ia_Map[i_Row + 1, i_Col + 1] == '*')
                         {
                             BombCt++;
-                        }*/
+                        }
+                        ia_Map[i_Row - 1, i_Col - 1] = Convert.ToChar(BombCt);
                     }
                     //上
                     if ((i_Row - 1) >= 0)
                     {
+                        //左上
+                        if (ia_Map[i_Row - 1, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //上
                         if (ia_Map[i_Row - 1, i_Col] == '*')
                         {
                             BombCt++;
                         }
-                    }
-                    //右上
-                    if ((i_Row - 1) >= 0 && (i_Col + 1) < 10)
-                    {
+                        //右上
                         if (ia_Map[i_Row - 1, i_Col + 1] == '*')
                         {
                             BombCt++;
                         }
-                    }
-                    //左
-                    if ((i_Col - 1) > 0)
-                    {
+                        //左
                         if (ia_Map[i_Row, i_Col - 1] == '*')
                         {
                             BombCt++;
                         }
-                    }
-
-                    //右
-                    if ((i_Col + 1) < 10) //Row:0-0=0 Col:0+1=1
-                    {
+                        //右
                         if (ia_Map[i_Row, i_Col + 1] == '*')
                         {
                             BombCt++;
                         }
-                    }
-
-                    //左下
-                    if ((i_Row + 1) < 10 && (i_Col - 1) >= 0)
-                    {
+                        //左下
                         if (ia_Map[i_Row + 1, i_Col - 1] == '*')
                         {
                             BombCt++;
                         }
-                    }
-                    //下
-                    if ((i_Row + 1) < 10)
-                    {
+                        //下
                         if (ia_Map[i_Row + 1, i_Col] == '*')
                         {
                             BombCt++;
                         }
-                    }
-                    //右下
-                    if ((i_Row + 1) < 10 && (i_Col + 1) <= 9)
-                    {
+                        //右下
                         if (ia_Map[i_Row + 1, i_Col + 1] == '*')
                         {
                             BombCt++;
                         }
+                        ia_Map[i_Row - 1, i_Col] = Convert.ToChar(BombCt);
                     }
-                    Response.Write(Convert.ToInt32(BombCt) + "<br />");
-                    ia_Map[i_Row, i_Col] = Convert.ToChar(BombCt);
+                    //右上
+                    if ((i_Row - 1) >= 0 && (i_Col + 1) < 10)
+                    {
+                        //左上
+                        if (ia_Map[i_Row - 1, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //上
+                        if (ia_Map[i_Row - 1, i_Col] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右上
+                        if (ia_Map[i_Row - 1, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //左
+                        if (ia_Map[i_Row, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右
+                        if (ia_Map[i_Row, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //左下
+                        if (ia_Map[i_Row + 1, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //下
+                        if (ia_Map[i_Row + 1, i_Col] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右下
+                        if (ia_Map[i_Row + 1, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        ia_Map[i_Row - 1, i_Col + 1] = Convert.ToChar(BombCt);
+                    }
+                    //左
+                    if ((i_Col - 1) > 0)
+                    {
+                        //左上
+                        if (ia_Map[i_Row - 1, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //上
+                        if (ia_Map[i_Row - 1, i_Col] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右上
+                        if (ia_Map[i_Row - 1, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //左
+                        if (ia_Map[i_Row, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右
+                        if (ia_Map[i_Row, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //左下
+                        if (ia_Map[i_Row + 1, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //下
+                        if (ia_Map[i_Row + 1, i_Col] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右下
+                        if (ia_Map[i_Row + 1, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        ia_Map[i_Row, i_Col - 1] = Convert.ToChar(BombCt);
+                    }
+                    //右
+                    if ((i_Col + 1) < 10) //Row:0-0=0 Col:0+1=1
+                    {
+                        //左上
+                        if (i_Row > 0 && ia_Map[i_Row - 1, i_Col - 1] == '*' )
+                        {
+                            BombCt++;
+                        }
+                        //上
+                        if (i_Row > 0 && ia_Map[i_Row - 1, i_Col] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右上
+                        if (i_Row > 0 && ia_Map[i_Row - 1, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //左
+                        if (i_Row > 0 && ia_Map[i_Row, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右
+                        if (i_Row > 0 && ia_Map[i_Row, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //左下
+                        if (i_Row > 0 && ia_Map[i_Row + 1, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //下
+                        if (i_Row > 0 && ia_Map[i_Row + 1, i_Col] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右下
+                        if (i_Row > 0 && ia_Map[i_Row + 1, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        ia_Map[i_Row, i_Col +1] = Convert.ToChar(BombCt);
+                    }
+                    //左下
+                    if ((i_Row + 1) < 10 && (i_Col - 1) >= 0)
+                    {
+
+                        //左上
+                        if (i_Col < 0 && ia_Map[i_Row - 1, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //上
+                        if (i_Col > 0 && ia_Map[i_Row - 1, i_Col] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右上
+                        if (i_Col > 0 && ia_Map[i_Row - 1, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //左
+                        if (i_Col > 0 && ia_Map[i_Row, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右
+                        if (i_Col > 0 && ia_Map[i_Row, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //左下
+                        if (i_Col > 0 && ia_Map[i_Row + 1, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //下
+                        if (i_Col > 0 && ia_Map[i_Row + 1, i_Col] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右下
+                        if (i_Col > 0 && ia_Map[i_Row + 1, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        ia_Map[i_Row + 1, i_Col - 1] = Convert.ToChar(BombCt);
+                    }
+                    //下
+                    if ((i_Row + 1) < 10)
+                    {
+                        //左上
+                        if (ia_Map[i_Row - 1, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //上
+                        if (ia_Map[i_Row - 1, i_Col] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右上
+                        if (ia_Map[i_Row - 1, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //左
+                        if (ia_Map[i_Row, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右
+                        if (ia_Map[i_Row, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //左下
+                        if (ia_Map[i_Row + 1, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //下
+                        if (ia_Map[i_Row + 1, i_Col] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右下
+                        if (ia_Map[i_Row + 1, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        ia_Map[i_Row + 1, i_Col] = Convert.ToChar(BombCt);
+                    }
+                    //右下
+                    if ((i_Row + 1) < 10 && (i_Col + 1) < 10)
+                    {
+                        //左上
+                        if (ia_Map[i_Row - 1, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //上
+                        if (ia_Map[i_Row - 1, i_Col] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右上
+                        if (ia_Map[i_Row - 1, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //左
+                        if (ia_Map[i_Row, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右
+                        if (ia_Map[i_Row, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //左下
+                        if (ia_Map[i_Row + 1, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //下
+                        if (ia_Map[i_Row + 1, i_Col] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右下
+                        if (ia_Map[i_Row + 1, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        ia_Map[i_Row +1, i_Col +1] = Convert.ToChar(BombCt);
+                    }
                 }
                 //#endregion
             }
