@@ -67,11 +67,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bomb2.aspx" />
     <Content Include="Bomd.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bomb2.aspx.cs">
+      <DependentUpon>Bomb2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bomb2.aspx.designer.cs">
+      <DependentUpon>Bomb2.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Bomd.aspx.cs">
       <DependentUpon>Bomd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
