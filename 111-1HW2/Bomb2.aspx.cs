@@ -22,7 +22,7 @@ namespace _111_1HW2
                 }
             }
 
-            for (int i_Ct = 0; i_Ct < 10; i_Ct++)
+            for (int i_Ct = 0; i_Ct < ia_Mlndex.Length; i_Ct++)
             {
                 int i_Row = ia_Mlndex[i_Ct] / 10; //0
                 int i_Col = ia_Mlndex[i_Ct] % 10; //0
@@ -86,42 +86,42 @@ namespace _111_1HW2
                     if ((i_Row - 1) >= 0)
                     {
                         //左上
-                        if (ia_Map[i_Row - 1, i_Col - 1] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row - 1, i_Col - 1] == '*')
                         {
                             BombCt++;
                         }
                         //上
-                        if (ia_Map[i_Row - 1, i_Col] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row - 1, i_Col] == '*')
                         {
                             BombCt++;
                         }
                         //右上
-                        if (ia_Map[i_Row - 1, i_Col + 1] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row - 1, i_Col + 1] == '*')
                         {
                             BombCt++;
                         }
                         //左
-                        if (ia_Map[i_Row, i_Col - 1] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row, i_Col - 1] == '*')
                         {
                             BombCt++;
                         }
                         //右
-                        if (ia_Map[i_Row, i_Col + 1] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row, i_Col + 1] == '*')
                         {
                             BombCt++;
                         }
                         //左下
-                        if (ia_Map[i_Row + 1, i_Col - 1] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row + 1, i_Col - 1] == '*')
                         {
                             BombCt++;
                         }
                         //下
-                        if (ia_Map[i_Row + 1, i_Col] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row + 1, i_Col] == '*')
                         {
                             BombCt++;
                         }
                         //右下
-                        if (ia_Map[i_Row + 1, i_Col + 1] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row + 1, i_Col + 1] == '*')
                         {
                             BombCt++;
                         }
@@ -131,143 +131,7 @@ namespace _111_1HW2
                     if ((i_Row - 1) >= 0 && (i_Col + 1) < 10)
                     {
                         //左上
-                        if (ia_Map[i_Row - 1, i_Col - 1] == '*')
-                        {
-                            BombCt++;
-                        }
-                        //上
-                        if (ia_Map[i_Row - 1, i_Col] == '*')
-                        {
-                            BombCt++;
-                        }
-                        //右上
-                        if (ia_Map[i_Row - 1, i_Col + 1] == '*')
-                        {
-                            BombCt++;
-                        }
-                        //左
-                        if (ia_Map[i_Row, i_Col - 1] == '*')
-                        {
-                            BombCt++;
-                        }
-                        //右
-                        if (ia_Map[i_Row, i_Col + 1] == '*')
-                        {
-                            BombCt++;
-                        }
-                        //左下
-                        if (ia_Map[i_Row + 1, i_Col - 1] == '*')
-                        {
-                            BombCt++;
-                        }
-                        //下
-                        if (ia_Map[i_Row + 1, i_Col] == '*')
-                        {
-                            BombCt++;
-                        }
-                        //右下
-                        if (ia_Map[i_Row + 1, i_Col + 1] == '*')
-                        {
-                            BombCt++;
-                        }
-                        ia_Map[i_Row - 1, i_Col + 1] = Convert.ToChar(BombCt);
-                    }
-                    //左
-                    if ((i_Col - 1) > 0)
-                    {
-                        //左上
-                        if (ia_Map[i_Row - 1, i_Col - 1] == '*')
-                        {
-                            BombCt++;
-                        }
-                        //上
-                        if (ia_Map[i_Row - 1, i_Col] == '*')
-                        {
-                            BombCt++;
-                        }
-                        //右上
-                        if (ia_Map[i_Row - 1, i_Col + 1] == '*')
-                        {
-                            BombCt++;
-                        }
-                        //左
-                        if (ia_Map[i_Row, i_Col - 1] == '*')
-                        {
-                            BombCt++;
-                        }
-                        //右
-                        if (ia_Map[i_Row, i_Col + 1] == '*')
-                        {
-                            BombCt++;
-                        }
-                        //左下
-                        if (ia_Map[i_Row + 1, i_Col - 1] == '*')
-                        {
-                            BombCt++;
-                        }
-                        //下
-                        if (ia_Map[i_Row + 1, i_Col] == '*')
-                        {
-                            BombCt++;
-                        }
-                        //右下
-                        if (ia_Map[i_Row + 1, i_Col + 1] == '*')
-                        {
-                            BombCt++;
-                        }
-                        ia_Map[i_Row, i_Col - 1] = Convert.ToChar(BombCt);
-                    }
-                    //右
-                    if ((i_Col + 1) < 10) //Row:0-0=0 Col:0+1=1
-                    {
-                        //左上
-                        if (i_Row > 0 && ia_Map[i_Row - 1, i_Col - 1] == '*' )
-                        {
-                            BombCt++;
-                        }
-                        //上
-                        if (i_Row > 0 && ia_Map[i_Row - 1, i_Col] == '*')
-                        {
-                            BombCt++;
-                        }
-                        //右上
-                        if (i_Row > 0 && ia_Map[i_Row - 1, i_Col + 1] == '*')
-                        {
-                            BombCt++;
-                        }
-                        //左
-                        if (i_Row > 0 && ia_Map[i_Row, i_Col - 1] == '*')
-                        {
-                            BombCt++;
-                        }
-                        //右
-                        if (i_Row > 0 && ia_Map[i_Row, i_Col + 1] == '*')
-                        {
-                            BombCt++;
-                        }
-                        //左下
-                        if (i_Row > 0 && ia_Map[i_Row + 1, i_Col - 1] == '*')
-                        {
-                            BombCt++;
-                        }
-                        //下
-                        if (i_Row > 0 && ia_Map[i_Row + 1, i_Col] == '*')
-                        {
-                            BombCt++;
-                        }
-                        //右下
-                        if (i_Row > 0 && ia_Map[i_Row + 1, i_Col + 1] == '*')
-                        {
-                            BombCt++;
-                        }
-                        ia_Map[i_Row, i_Col +1] = Convert.ToChar(BombCt);
-                    }
-                    //左下
-                    if ((i_Row + 1) < 10 && (i_Col - 1) >= 0)
-                    {
-
-                        //左上
-                        if (i_Col < 0 && ia_Map[i_Row - 1, i_Col - 1] == '*')
+                        if (i_Col > 0 && ia_Map[i_Row - 1, i_Col - 1] == '*')
                         {
                             BombCt++;
                         }
@@ -306,48 +170,184 @@ namespace _111_1HW2
                         {
                             BombCt++;
                         }
+                        ia_Map[i_Row - 1, i_Col + 1] = Convert.ToChar(BombCt);
+                    }
+                    //左
+                    if ((i_Col - 1) >= 0)
+                    {
+                        //左上
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row - 1, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //上
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row - 1, i_Col] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右上
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row - 1, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //左
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //左下
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row + 1, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //下
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row + 1, i_Col] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右下
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row + 1, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        ia_Map[i_Row, i_Col - 1] = Convert.ToChar(BombCt);
+                    }
+                    //右
+                    if ((i_Col + 1) < 10) //Row:0-0=0 Col:0+1=1
+                    {
+                        //左上
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row - 1, i_Col - 1] == '*' )
+                        {
+                            BombCt++;
+                        }
+                        //上
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row - 1, i_Col] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右上
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row - 1, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //左
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //左下
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row + 1, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //下
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row + 1, i_Col] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右下
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row + 1, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        ia_Map[i_Row, i_Col +1] = Convert.ToChar(BombCt);
+                    }
+                    //左下
+                    if ((i_Row + 1) < 10 && (i_Col - 1) >= 0)
+                    {
+
+                        //左上
+                        if (i_Row > 0 && ia_Map[i_Row - 1, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //上
+                        if (i_Row > 0 && ia_Map[i_Row - 1, i_Col] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右上
+                        if (i_Row > 0 && ia_Map[i_Row - 1, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //左
+                        if (i_Row > 0 && ia_Map[i_Row, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右
+                        if (i_Row > 0 && ia_Map[i_Row, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //左下
+                        if (i_Row > 0 && ia_Map[i_Row + 1, i_Col - 1] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //下
+                        if (i_Row > 0 && ia_Map[i_Row + 1, i_Col] == '*')
+                        {
+                            BombCt++;
+                        }
+                        //右下
+                        if (i_Row > 0 && ia_Map[i_Row + 1, i_Col + 1] == '*')
+                        {
+                            BombCt++;
+                        }
                         ia_Map[i_Row + 1, i_Col - 1] = Convert.ToChar(BombCt);
                     }
                     //下
                     if ((i_Row + 1) < 10)
                     {
                         //左上
-                        if (ia_Map[i_Row - 1, i_Col - 1] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row - 1, i_Col - 1] == '*')
                         {
                             BombCt++;
                         }
                         //上
-                        if (ia_Map[i_Row - 1, i_Col] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row - 1, i_Col] == '*')
                         {
                             BombCt++;
                         }
                         //右上
-                        if (ia_Map[i_Row - 1, i_Col + 1] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row - 1, i_Col + 1] == '*')
                         {
                             BombCt++;
                         }
                         //左
-                        if (ia_Map[i_Row, i_Col - 1] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row, i_Col - 1] == '*')
                         {
                             BombCt++;
                         }
                         //右
-                        if (ia_Map[i_Row, i_Col + 1] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row, i_Col + 1] == '*')
                         {
                             BombCt++;
                         }
                         //左下
-                        if (ia_Map[i_Row + 1, i_Col - 1] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row + 1, i_Col - 1] == '*')
                         {
                             BombCt++;
                         }
                         //下
-                        if (ia_Map[i_Row + 1, i_Col] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row + 1, i_Col] == '*')
                         {
                             BombCt++;
                         }
                         //右下
-                        if (ia_Map[i_Row + 1, i_Col + 1] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row + 1, i_Col + 1] == '*')
                         {
                             BombCt++;
                         }
@@ -357,42 +357,42 @@ namespace _111_1HW2
                     if ((i_Row + 1) < 10 && (i_Col + 1) < 10)
                     {
                         //左上
-                        if (ia_Map[i_Row - 1, i_Col - 1] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row - 1, i_Col - 1] == '*')
                         {
                             BombCt++;
                         }
                         //上
-                        if (ia_Map[i_Row - 1, i_Col] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row - 1, i_Col] == '*')
                         {
                             BombCt++;
                         }
                         //右上
-                        if (ia_Map[i_Row - 1, i_Col + 1] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row - 1, i_Col + 1] == '*')
                         {
                             BombCt++;
                         }
                         //左
-                        if (ia_Map[i_Row, i_Col - 1] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row, i_Col - 1] == '*')
                         {
                             BombCt++;
                         }
                         //右
-                        if (ia_Map[i_Row, i_Col + 1] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row, i_Col + 1] == '*')
                         {
                             BombCt++;
                         }
                         //左下
-                        if (ia_Map[i_Row + 1, i_Col - 1] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row + 1, i_Col - 1] == '*')
                         {
                             BombCt++;
                         }
                         //下
-                        if (ia_Map[i_Row + 1, i_Col] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row + 1, i_Col] == '*')
                         {
                             BombCt++;
                         }
                         //右下
-                        if (ia_Map[i_Row + 1, i_Col + 1] == '*')
+                        if (i_Row > 0 && i_Col > 0 && ia_Map[i_Row + 1, i_Col + 1] == '*')
                         {
                             BombCt++;
                         }
