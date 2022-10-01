@@ -1,10 +1,10 @@
 ﻿# 第2次作業-作業-HW2
 >
->學號：1234567 
+>學號：109111101 
 ><br />
->姓名：王小明 
+>姓名：邱韋翔
 ><br />
->作業撰寫時間：180 (mins，包含程式撰寫時間)
+>作業撰寫時間：150 (mins，包含程式撰寫時間)
 ><br />
 >最後撰寫文件日期：2022/10/12
 >
@@ -22,37 +22,142 @@
 還需使用語法` ```csharp 程式碼 ``` `，
 下段程式碼則為使用後結果：
 
+先建立一個專門用來儲存炸彈的一維陣列，在建立一個二維陣列代表邊界大小
+，其中一維陣列指定`int`二維陣列指定`char`，這樣方便後續用`for`迴圈時可以運用`for`迴圈的特性
+快速取出一維陣列裡的元素。建立完之後先用`for`迴圈讓二維陣列全部填滿`0`，那再根據一維陣列存入炸彈的位置運用`for`迴圈
+填入進二維陣列裡。那再來就是去判斷，只要有炸彈(`*`)的周圍都要`+1`所以先寫出要判斷的二維陣列位置，再根據該位置
+先進行數字的轉換，因為原先二維陣列全部都是字元(`char`)，那會遇到炸彈周圍也有炸彈的情況，所以我加了一行判斷式如果該位置不是'*'則執行`+1的動作
+，如果是則不做任何動作。最後在列印全部的二維陣列，下段程式碼為使用後結果：
+
+
 ```csharp
-public void mt_getResult(){
-    ...
+    public partial class Bomd : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            //填入0
+            int[] ia_Mlndex = new int[10] { 0, 7, 13, 28, 44, 62, 74, 75, 87, 90 };
+            char[,] ia_Map = new char[10, 10];
+            for (int i_Row = 0; i_Row < 10; i_Row++)
+            {
+                for (int i_Col = 0; i_Col < 10; i_Col++)
+                {
+                    ia_Map[i_Row, i_Col] = '0';
+                }
+            }
+            //填入*
+            for (int i_Ct = 0; i_Ct < ia_Mlndex.Length; i_Ct++)
+            {
+                int i_Row = ia_Mlndex[i_Ct] / 10; //0
+                int i_Col = ia_Mlndex[i_Ct] % 10; //0
+                ia_Map[i_Row, i_Col] = '*';
+                //Response.Write(ia_Map[i_Row, i_Col]);
+            }
+            //訪問*周邊
+            for (int i_Ct = 0; i_Ct < ia_Mlndex.Length; i_Ct++)
+            {
+                int i_Row = ia_Mlndex[i_Ct] / 10; //0
+                int i_Col = ia_Mlndex[i_Ct] % 10; //0
+                //左上
+                if ((i_Row - 1) >= 0 && (i_Col - 1) >= 0)
+                {
+                    if (ia_Map[i_Row - 1, i_Col - 1] != '*')
+                    {
+                        int i_Num = Convert.ToInt32(ia_Map[i_Row - 1, i_Col - 1]);
+                        i_Num++;
+                        ia_Map[i_Row - 1, i_Col - 1] = Convert.ToChar(i_Num);
+                    }
+                }
+                //上
+                if ((i_Row - 1) >= 0)
+                {
+                    if (ia_Map[i_Row - 1, i_Col] != '*')
+                    {
+                        int i_Num = Convert.ToInt32(ia_Map[i_Row - 1, i_Col]);
+                        i_Num++;
+                        ia_Map[i_Row - 1, i_Col] = Convert.ToChar(i_Num);
+                    }
+                }
+                //右上
+                if ((i_Row - 1) >= 0 && (i_Col + 1) < 10)
+                {
+                    if (ia_Map[i_Row - 1, i_Col + 1] != '*')
+                    {
+                        int i_Num = Convert.ToInt32(ia_Map[i_Row - 1, i_Col + 1]);
+                        i_Num++;
+                        ia_Map[i_Row - 1, i_Col + 1] = Convert.ToChar(i_Num);
+                    }
+                }
+                //左
+                if ((i_Col - 1) >= 0)
+                {
+                    if (ia_Map[i_Row, i_Col - 1] != '*')
+                    {
+                        int i_Num = Convert.ToInt32(ia_Map[i_Row, i_Col - 1]);
+                        i_Num++;
+                        ia_Map[i_Row, i_Col - 1] = Convert.ToChar(i_Num);
+                    }
+                }
+
+                //右
+                if ((i_Col + 1) < 10)
+                {
+                    if (ia_Map[i_Row, i_Col + 1] != '*')
+                    {
+                        int i_Num = Convert.ToInt32(ia_Map[i_Row, i_Col + 1]);
+                        i_Num++;
+                        ia_Map[i_Row, i_Col + 1] = Convert.ToChar(i_Num);
+                    }
+                }
+
+                //左下
+                if ((i_Row + 1) < 10 && (i_Col - 1) >= 0)
+                {
+                    if (ia_Map[i_Row + 1, i_Col - 1] != '*')
+                    {
+                        int i_Num = Convert.ToInt32(ia_Map[i_Row + 1, i_Col - 1]);
+                        i_Num++;
+                        ia_Map[i_Row + 1, i_Col - 1] = Convert.ToChar(i_Num);
+                    }
+                }
+                //下
+                if ((i_Row + 1) < 10)
+                {
+                    if (ia_Map[i_Row + 1, i_Col] != '*')
+                    {
+                        int i_Num = Convert.ToInt32(ia_Map[i_Row + 1, i_Col]);
+                        i_Num++;
+                        ia_Map[i_Row + 1, i_Col] = Convert.ToChar(i_Num);
+                    }
+                }
+                //右下
+                if ((i_Row + 1) < 10 && (i_Col + 1) < 10)
+                {
+                    if (ia_Map[i_Row + 1, i_Col + 1] != '*')
+                    {
+                        int i_Num = Convert.ToInt32(ia_Map[i_Row + 1, i_Col + 1]);
+                        i_Num++;
+                        ia_Map[i_Row + 1, i_Col + 1] = Convert.ToChar(i_Num);
+                    }
+                }
+            }
+            //最後訪問全部的陣列
+            for (int i_Row = 0; i_Row < 10; i_Row++)
+            {
+                for (int i_Col = 0; i_Col < 10; i_Col++)
+                {
+                    Response.Write(ia_Map[i_Row, i_Col]);
+                }
+                Response.Write("<br />");
+            }
+        }
+    }
+}
 }
 ```
 
-若要於內文中標示部分.aspx檔，則使用以下標籤` ```html 程式碼 ``` `，
-下段程式碼則為使用後結果：
-
-```html
-<%@ Page Language="C#" AutoEventWireup="true" ...>
-
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" ...>
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-        </div>
-    </form>
-</body>
-</html>
-```
-
-
 ## 個人認為完成作業須具備觀念
 
-開始寫說明，需要說明本次作業個人覺得需學會那些觀念 (需寫成文章，需最少50字，
-並且文內不得有你、我、他三種文字)
+須先了解題目的要求，在了解`for`迴圈的語法和`if else`語法及邏輯運算子符號的運用，還有建立陣列的語法
+，以及型別的轉換(例如:`char`、`int`)，還有一些換行的技巧會運用到HTML語法
 
