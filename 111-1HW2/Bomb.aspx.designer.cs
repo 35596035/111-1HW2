@@ -11,7 +11,7 @@ namespace _111_1HW2
 {
 
 
-    public partial class Bomd
+    public partial class Bomb
     {
 
         /// <summary>
