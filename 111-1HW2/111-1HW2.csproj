@@ -68,7 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bomb2.aspx" />
-    <Content Include="Bomd.aspx" />
+    <Content Include="Bomb.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -80,12 +80,12 @@
     <Compile Include="Bomb2.aspx.designer.cs">
       <DependentUpon>Bomb2.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Bomd.aspx.cs">
-      <DependentUpon>Bomd.aspx</DependentUpon>
+    <Compile Include="Bomb.aspx.cs">
+      <DependentUpon>Bomb.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Bomd.aspx.designer.cs">
-      <DependentUpon>Bomd.aspx</DependentUpon>
+    <Compile Include="Bomb.aspx.designer.cs">
+      <DependentUpon>Bomb.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
